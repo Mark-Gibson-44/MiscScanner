@@ -1,0 +1,21 @@
+Keywords:
+this	|
+new	|
+const	|
+for	|
+while	|
+if	;
+Types:
+var	|
+int	|
+bool	|
+char	;
+Operators:
++	|
+-	|
+/	|
+*	|
+^	|
+&&	|
+<	|
+>	;
