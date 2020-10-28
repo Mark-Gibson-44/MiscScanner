@@ -3,10 +3,13 @@
 
 
 class fsaNode{
+	
+	
+	std::vector<char> state;
+	public:
+
 	bool acceptState;
 	std::vector<fsaNode*> links;
-	std::vector<char> state;
-
 	fsaNode(bool accept, std::vector<char>  elements)
 	{
 		acceptState = accept;
