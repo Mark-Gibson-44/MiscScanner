@@ -4,20 +4,24 @@
 
 class fsaNode{
 	
-	
+	//List of characters for a given state
 	std::vector<char> characters;
 	public:
-
+	//Is the node an Accepting state or not
 	bool acceptState;
+	//Links to connecting states
 	std::vector<fsaNode*> links;
+	//Creation of object with relevant params
 	fsaNode(bool accept, std::vector<char>  elements)
 	{
 		acceptState = accept;
 		characters = elements;
 	}
+	//adds a node to this
 	void addNode(fsaNode *link){
 		links.push_back(link);
 	}
+	//for a node prints out its characters
 	void printChars()
 	{
 		for(auto x : characters)
@@ -25,6 +29,8 @@ class fsaNode{
 			std::cout << x << std::endl;
 		}
 	}
+	//Iterates over a node and their children printing out its contents
+	//TODO Have a check if nodes loop
 	void traverse(fsaNode *start)
 	{
 		std::cout << "NEW Node" << std::endl;
@@ -38,6 +44,7 @@ class fsaNode{
 
 			
 	}
+	//TODO
 	bool Valid(char a, int distance, fsaNode *start)
 	{
 		//traverse to node X
@@ -51,6 +58,7 @@ class fsaNode{
 		}
 		return false;
 	}
+	//TODO
 	bool validString(std::string lexeme)
 	{
 		for(int i = 0; i < lexeme.size(); i++)
