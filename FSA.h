@@ -45,28 +45,29 @@ class fsaNode{
 			
 	}
 	//TODO
-	bool Valid(char a, int distance, fsaNode *start)
+	fsaNode* Valid(char a, fsaNode *node)
 	{
-		//traverse to node X
-		//then check the characters within that state
-		for(int o = 0; o < start->links.size(); o++)
+		//Looks through all of a nodes neighbouring nodes characters
+		//returns a pointer to the node with the character desired
+		//else return nullptr
+		for(int i=0; i < node->links.size();i++)
 		{
-			//if(node->links[i] == a)
-			//{
-				return true;
-			//}
+			for(auto x: node->links[i]->characters)
+			{
+				if(x == a)
+					return node.links[i];
+			}
 		}
-		return false;
+		return nullptr;
 	}
 	//TODO
-	bool validString(std::string lexeme)
+	bool validString(std::string lexeme, fsaNode &node)
 	{
-		for(int i = 0; i < lexeme.size(); i++)
-		{
-			//Check if character fits into StateMachine
-			//Takes character and posistion
-		}
-		return false;
+		//constantly traverses the string passing in the starting node
+		//TODO implement some sort of error state;
+		//if it doesnt end up in the error state return true else return false
+		int iter = 0;
+		return true;
 	}
 };
 
