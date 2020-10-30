@@ -53,11 +53,14 @@ class fsaNode{
 		if(node->links.size() > 0){
 			for(int i=0; i < node->links.size();i++)
 			{
+				
 				for(auto x: node->links[i]->characters)
 				{
+					
 					if(x == a)
 						return node->links[i];
 				}
+				
 			}
 		}
 		return nullptr;
@@ -69,12 +72,14 @@ class fsaNode{
 		//TODO implement some sort of error state;
 		//if it doesnt end up in the error state return true else return false
 		int iter = 0;
-		while(Valid(lexeme.at(iter), &node) != nullptr && iter < lexeme.size())
+	
+		while(iter < lexeme.size() && Valid(lexeme.at(iter), &node) != nullptr)
 		{
-			
+		
 			iter++;
-
+			
 		}
+		
 		if(iter == lexeme.size())
 			return true;
 		return false;
