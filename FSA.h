@@ -50,12 +50,14 @@ class fsaNode{
 		//Looks through all of a nodes neighbouring nodes characters
 		//returns a pointer to the node with the character desired
 		//else return nullptr
-		for(int i=0; i < node->links.size();i++)
-		{
-			for(auto x: node->links[i]->characters)
+		if(node->links.size() > 0){
+			for(int i=0; i < node->links.size();i++)
 			{
-				if(x == a)
-					return node.links[i];
+				for(auto x: node->links[i]->characters)
+				{
+					if(x == a)
+						return node->links[i];
+				}
 			}
 		}
 		return nullptr;
@@ -67,7 +69,15 @@ class fsaNode{
 		//TODO implement some sort of error state;
 		//if it doesnt end up in the error state return true else return false
 		int iter = 0;
-		return true;
+		while(Valid(lexeme.at(iter), &node) != nullptr && iter < lexeme.size())
+		{
+			
+			iter++;
+
+		}
+		if(iter == lexeme.size())
+			return true;
+		return false;
 	}
 };
 
