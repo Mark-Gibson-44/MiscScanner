@@ -9,6 +9,8 @@ class fsaNode{
 	public:
 	//Is the node an Accepting state or not
 	bool acceptState;
+	//check to prevent infinite loops, probably temporary
+	bool traversed = false;
 	//Links to connecting states
 	std::vector<fsaNode*> links;
 	//Creation of object with relevant params
@@ -33,18 +35,25 @@ class fsaNode{
 	//TODO Have a check if nodes loop
 	void traverse(fsaNode *start)
 	{
+		fsaNode *temp = start;
 		std::cout << "NEW Node" << std::endl;
 		if(!start->links.size())
 			std::cout << "empty" << std::endl;
 		for(int i = 0; i < start->links.size(); i++)
 		{
+			if(start->links[i]->traversed)
+			{
+				std::cout << "Loop to Head" << std::endl;
+				return;
+			}
 			start->links[i]->printChars();
+			start->links[i]->traversed = true;
 			traverse(start->links[i]);
 		}
 
 			
 	}
-	//TODO
+	
 	fsaNode* Valid(char a, fsaNode *node)
 	{
 		//Looks through all of a nodes neighbouring nodes characters
@@ -80,7 +89,7 @@ class fsaNode{
 			
 		}
 		
-		if(iter == lexeme.size())
+		if(iter == lexeme.size() && node.acceptState)
 			return true;
 		return false;
 	}
