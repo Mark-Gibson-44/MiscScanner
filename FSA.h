@@ -32,7 +32,7 @@ class fsaNode{
 		}
 	}
 	//Iterates over a node and their children printing out its contents
-	//TODO Have a check if nodes loop
+	
 	void traverse(fsaNode *start)
 	{
 		fsaNode *temp = start;

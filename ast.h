@@ -4,11 +4,7 @@
 #include <iostream>
 
 
-typedef enum{
-	Type,
-	arithmeticOp,
-	booleanOp,
-} nodeType;
+std::string nodeTypes[] = {"TypeDecl", "ArithOp", "BoolOp"};
 
 std::string chars[][4] = {{"int", "char", "bool"}, {"+","-", "/", "*"}, {"&&", "||"}};
 
@@ -39,7 +35,7 @@ class ASTnode{
 		//set it as lexeme
 		std::cin >> lexeme;
 		type = t(lexeme);
-		std::cout << lexeme << " is type " << type << std::endl;
+		std::cout << lexeme << " is type " << nodeTypes[type] << std::endl;
 	}
 
 

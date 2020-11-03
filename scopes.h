@@ -2,12 +2,13 @@
 #include <vector>//Everyones favourite datastructure
 #include <string>
 #include <iostream>
+#include "types.h"
 #define GLOBAL nullptr
 
 //temp struct for testing
 typedef struct{
 	std::string name;//variable name
-	//Type type;//type for semantic analysis
+	Type type;//type for semantic analysis
 	bool init;//is the variable initialised
 }variable;
 
@@ -33,7 +34,7 @@ class Scope
 		
 		for(auto i: vars)
 		{
-			std::cout << "Variable " << i.name << std::endl;
+			std::cout << "Variable " << i.type.getTypeName() << " " << i.name << std::endl;
 		}
 		if(outer == GLOBAL)
 			return;
