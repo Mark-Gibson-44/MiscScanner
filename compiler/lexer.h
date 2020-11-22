@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <iostream>
 #include <fstream>
 
@@ -10,7 +11,7 @@ class lexer
 	char prevChar;
 	char current;
 	std::string curLexeme;
-	//std::vector<lexeme>
+	std::vector<std::string> progLexeme;
 	public:
 	void read()
 	{
@@ -28,6 +29,7 @@ class lexer
 		}
 		//Read first character -> process character
 		}
+		dumpLexeme();
 	}
 
 	//reads from after an openning brace
@@ -80,7 +82,7 @@ class lexer
 	bool validLexeme()
 	{
 	//
-	//
+		
 		return true;
 		
 	}
@@ -88,7 +90,8 @@ class lexer
 	
 	void processLexeme()
 	{
-		std::cout << curLexeme;
+		progLexeme.push_back(curLexeme);
+		//std::cout << curLexeme;
 		if(!validLexeme())
 			std::cerr << "Invalid Lexeme" << std::endl;
 		
@@ -108,6 +111,13 @@ class lexer
 				break;
 		}	
 		
+	}
+	void dumpLexeme()
+	{
+		for(auto& a: progLexeme)
+		{
+			std::cout << a ;
+		}
 	}
 
 };
